@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <style>
+        html,
+        body{
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        
+        .glitch{
+            width: 500px;
+            height: 500px;
+            margin: auto;
+            position: relative;
+            top: 50%;
+            transform: translateY(-50%);
+            background-image: url(glitch.jpeg);
+            background-size: 100% 100%;
+            
+            overflow: hidden;
+        }
+        
+        #glitch1{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: url(glitch.jpeg);
+            background-size: 100% 100%;
+        }
+        
+        #glitch2{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            background: url(glitch.jpeg);
+            background-size: 100% 100%;
+            mix-blend-mode: hue;
+        }
+    </style>
+    
+    <div class="glitch" id="glitch">
+        <div id="glitch1"></div>
+        <div id="glitch2"></div>
+    </div>
+    
+    
+    <script>
+        
+        //функция возвращающая случайный результат, находящийся между двух заданных
+        
+        function getRandomInt(min, max) {
+            return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+        
+        //Инициализируем глитч-слои
+        var glitch1 = document.getElementById("glitch1");//этот будет ломать изображение
+        var glitch2 = document.getElementById("glitch2");//этот будет давать ему цветные артефакты
+        
+        //Делаем тайминги
+        
+        var glitch1TimeMin = 600;
+        var glitch1TimeMax = 900;
+        
+        var glitch2TimeMin = 10;
+        var glitch2TimeMax = 115;
+        
+        
+        function glitch_1(){
+            var clipPos1 = getRandomInt(10, 100);
+            var clipPos2 = 9999;
+            var clipPos3 = getRandomInt(10, 400);
+            var clipPos4 = 0;
+            var leftValue = getRandomInt(0, 16);
+            var rightValue = getRandomInt(0, 16);
+            var randomTime = getRandomInt(glitch1TimeMin, glitch1TimeMax);
+            
+            
+            glitch1.style.left = leftValue + 'px';
+            glitch1.style.right = rightValue + 'px';
+            glitch1.style.clip = "rect(" + clipPos1 + "px," + clipPos2 + "px," + clipPos3 + "px," + clipPos4 +"px)";
+            
+            setTimeout(glitch_1, randomTime);
+        }
+        
+        function glitch_2(){
+            var clipPos1 = getRandomInt(10, 100);
+            var clipPos2 = 9999;
+            var clipPos3 = getRandomInt(10, 400);
+            var clipPos4 = 0;
+            var leftValue = getRandomInt(0, 16);
+            var rightValue = getRandomInt(0, 16);
+            var randomTime = getRandomInt(glitch2TimeMin, glitch2TimeMax);
+            
+            var randomScale = getRandomInt(1, 3);
+            
+            
+            glitch2.style.left = leftValue + 'px';
+            glitch2.style.right = rightValue + 'px';
+            glitch2.style.transform = "scale("+ randomScale +")";
+            glitch2.style.clip = "rect(" + clipPos1 + "px," + clipPos2 + "px," + clipPos3 + "px," + clipPos4 +"px)";
+            
+            setTimeout(glitch_2, randomTime);
+        }
+        
+        glitch_1();
+        glitch_2();
+    </script>
+</body>
+</html>

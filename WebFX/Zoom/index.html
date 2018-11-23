@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>jQuery Увеличение Изображений (okzoom.js)</title>
+	<style>
+		#example {
+	      height: 200px;
+	    }
+    </style>
+</head>
+
+<body>
+	<div style="text-align:center;">
+		<p>Наведите на изображение ниже чтобы увидеть эффект.</p>
+		<img id="example" src="demo.jpg">
+	</div>
+
+	<script src="js/jquery.js"></script>
+	<script src="js/okzoom.js"></script>
+	<script>
+		$(function(){
+	      $('#example').okzoom({
+	        width: 200,
+	        height: 200,
+	      });
+	    });
+	</script>
+</body>
+</html>
